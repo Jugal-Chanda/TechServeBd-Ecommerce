@@ -10,7 +10,12 @@ if(isset($_POST['login'])){
     }else{
         echo $session->login($user);
         //echo "successfull Login";
-        redirect("../index.php");
+        if($user->isadmin){
+          redirect("../admin.php");
+        }else{
+          redirect("../index.php");
+        }
+
     }
 }else{
     redirect("../login.php");

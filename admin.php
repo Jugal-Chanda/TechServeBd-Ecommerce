@@ -1,12 +1,13 @@
 <?php
 
 include_once('include/init.php');
-
+include_once('pagelayout/header.php');
 if($session->isSignedIn() == false || $session->isadmin() == false){
   redirect('login.php');
+}else{
+  $user = User::find_by_id($session->userId);
+  logoutOption($user);
 }
-include_once('pagelayout/header.php');
-include_once('pagelayout/top_header.php');
 spacer(30);
 include_once('pagelayout/second_header.php');
 spacer(50);

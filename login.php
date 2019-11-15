@@ -2,12 +2,12 @@
 //include_once('include/urls.php');
 include_once('include/init.php');
 
-include_once('include/header.php');
-include_once('include/top_header.php');
+include_once('pagelayout/header.php');
+include_once('pagelayout/top_header.php');
 spacer(30);
-include_once('include/second_header.php');
+include_once('pagelayout/second_header.php');
 spacer(50);
-include_once('include/navbar.php');
+include_once('pagelayout/navbar.php');
 spacer(50);
 
 
@@ -29,16 +29,12 @@ spacer(50);
             <button type="submit" class="btn btn-primary" name="login">Login</button>
         </form>
     </div>
-    
+
 </div>
 
 
 <?php
 
-include_once('include/footer.php');
+include_once('pagelayout/footer.php');
 
 ?>
-
-
-
-

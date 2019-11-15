@@ -5,7 +5,10 @@ include_once('include/init.php');
 include_once('pagelayout/header.php');
 if(!$session->isSignedIn()){
     include_once('pagelayout/top_header.php');
-
+}else{
+  $user = User::find_by_id($session->userId);
+  //echo $user->name;
+  logoutOption($user);
 }
 spacer(30);
 

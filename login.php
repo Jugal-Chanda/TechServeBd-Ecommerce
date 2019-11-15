@@ -1,7 +1,6 @@
 <?php
 //include_once('include/urls.php');
 include_once('include/init.php');
-
 include_once('pagelayout/header.php');
 include_once('pagelayout/top_header.php');
 spacer(30);

@@ -1,13 +1,16 @@
 <?php
 
 include_once('include/init.php');
-include_once('include/functions.php');
-include_once('include/header.php');
-include_once('include/top_header.php');
+
+if($session->isSignedIn() == false || $session->isadmin() == false){
+  redirect('login.php');
+}
+include_once('pagelayout/header.php');
+include_once('pagelayout/top_header.php');
 spacer(30);
-include_once('include/second_header.php');
+include_once('pagelayout/second_header.php');
 spacer(50);
-include_once('include/navbar.php');
+include_once('pagelayout/adminnavbar.php');
 spacer(50);
 
 $categories = Category::find_all();
@@ -18,7 +21,7 @@ if(isset($_POST['add_catagory'])){
     if(!$category->check_category_exist()){
         $category->save();
     }
-    
+
 }
 
 if(isset($_POST['add_product'])){
@@ -28,7 +31,7 @@ if(isset($_POST['add_product'])){
     $product->name = $_POST['product_name'];
     $product->price = $_POST['product_price'];
     $product->brand = $_POST['brand_name'];
-    $product->details = $_POST['product_details'];  
+    $product->details = $_POST['product_details'];
     $product->category_id = $_POST['catagory_id'];
     $product->save();
 }
@@ -73,16 +76,16 @@ if(isset($_POST['add_product'])){
                 <label for="catagory-select">Select a catregory</label>
                 <select multiple class="form-control" id="catagory-select" name="catagory_id">
                     <?php
-                    
+
                     foreach($categories as $category){
                     ?>
                     <option value="<?php echo $category->id; ?>"><?php echo $category->category_name ?></option>
-                    
+
                     <?php
                     }
-                    
+
                     ?>
-                    
+
                 </select>
             </div>
             <div class="form-group">
@@ -107,6 +110,6 @@ if(isset($_POST['add_product'])){
 
 <?php
 
-include_once('include/footer.php');
+include_once('pagelayout/footer.php');
 
 ?>

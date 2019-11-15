@@ -7,7 +7,6 @@ function spacer($height){
 
 
 function redirect($location){
-    echo "header";
     header('Location: '.$location);
 }
 

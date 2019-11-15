@@ -4,7 +4,7 @@ class Db_Object {
     
     
     
-    protected static $db_table = "librarians";
+    protected static $db_table = "";
     
     
     /*------------------------CRUD---------------------------*/
@@ -85,7 +85,7 @@ class Db_Object {
     
     
     /** class helper method   **/
-    protected function findThisQuery($sql){
+    protected static function findThisQuery($sql){
         global $db;
         $result = $db->query($sql);
         $librarians =  array();
@@ -95,7 +95,7 @@ class Db_Object {
         return $librarians;
         
     }
-    private function instantiation($row){
+    private static function instantiation($row){
         $class_name =  get_called_class();
         $object  = new $class_name;
         /*$librarian->$id = $row['id'];

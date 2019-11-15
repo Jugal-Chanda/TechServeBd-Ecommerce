@@ -20,7 +20,7 @@
                             <a class="nav-link" href="#">My Account</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Shoping Cart</a>
+                            <a class="nav-link" href="shoppingcart.php">Shoping Cart</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Checkout</a>

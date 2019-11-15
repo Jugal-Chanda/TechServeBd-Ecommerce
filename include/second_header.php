@@ -5,10 +5,10 @@
             <div class="row">
                 <!-- logo -->
                 <div class="col-md-4 col-lg-4 col-sm-12">
-                    <div class="logo"><a href="#"><img src="images/logo.png" title="" alt="logo" style="height: 100px;width: 200px;"></a></div>
+                    <div class="logo text-center"><a href="#"><img src="images/logo.png" title="" alt="logo" style="height: 100px;width: 200px;"></a></div>
                 </div>
                 <!-- promo -->
-                <div class="col-md-4 col-lg-4 pt-4 col-sm-12">
+                <div class="col-md-4 col-lg-4 pt-4 col-sm-12 text-center">
                     <span class=""><h5>Call No: +8801521461643</h5></span>
                 </div>
                 <!-- search -->

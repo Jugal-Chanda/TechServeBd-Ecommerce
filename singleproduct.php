@@ -1,5 +1,5 @@
 <?php
-include_once('include/functions.php');
+include_once('include/init.php');
 include_once('include/header.php');
 include_once('include/top_header.php');
 spacer(30);
@@ -66,7 +66,38 @@ spacer(50);
         <div class="col-md-2 col-sm-0"></div>
         <div class="col-md-8 col-sm-12">
             <div class="row">
-               <?php include_once('include/products_page.php');  ?>
+               <?php
+                        
+                        if(isset($_GET['category'])){
+                        $products = Product::find_by_category($_GET['category']);
+                        }else{
+                        $products = Product::find_all();
+                        }
+
+
+                        foreach($products as $product){
+                        
+                        ?>
+                        <div class="col-lg-4 col-md-6 col-sm-12" style="height: 450px; padding-bottom: 5px;">
+                            <div class="card" style="width: 100%;height: 100%;">
+                                <img class="card-img-top" src="<?php echo $product->image; ?>" alt="Card image cap" style="height: 200px; width: 100%; padding-top: 10px;">
+                                <div class="card-body product_details">
+                                    <h5 class="card-title"><?php echo $product->name; ?></h5>
+                                    <h3>Price&emsp; <?php echo $product->price ?></h3>
+                                    <a href="page_action/placeOrder.php?id=<?php echo $product->id; ?>" class="btn btn-primary add_cart_link">Add Cart</a>
+                                    <a href="singleproduct.php?id=<?php echo $product->id; ?>" class="expand_product "><i class="fa fa-arrows-alt fa-2x " aria-hidden="false" style="color: black;"></i></a>
+
+                                    <!--<i class="fa fa-expand-alt fa-2x" aria-hidden="false" style="color: black;"></i>-->
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                        <?php
+}
+?>
             </div>
         </div>
     </div>

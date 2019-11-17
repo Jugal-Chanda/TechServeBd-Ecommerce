@@ -26,7 +26,7 @@ function product($products){
                 <div class="card-body product_details">
                     <h5 class="card-title"><?php echo $product->name; ?></h5>
                     <h3>Price&emsp; <?php echo $product->price ?></h3>
-                        <a href="page_action/placeOrder.php?id=<?php echo $product->id; ?>" class="btn btn-primary add_cart_link">Add Cart</a>
+                        <a href="page_action/add_to_cart.php?id=<?php echo $product->id; ?>" class="btn btn-primary add_cart_link">Add Cart</a>
                         <a href="singleproduct.php?id=<?php echo $product->id; ?>" class="expand_product "><i class="fa fa-arrows-alt fa-2x " aria-hidden="false" style="color: black;"></i></a>
 
                         <!--<i class="fa fa-expand-alt fa-2x" aria-hidden="false" style="color: black;"></i>-->

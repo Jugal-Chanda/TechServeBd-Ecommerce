@@ -2,19 +2,14 @@
 
 include_once('include/init.php');
 include_once('pagelayout/header.php');
-if($session->isSignedIn() == false || $session->isadmin() == false){
-  redirect('login.php');
-}else{
-  $user = User::find_by_id($session->userId);
-  logoutOption($user);
-}
+include_once('pagelayout/admin_is_signedin.php');
 spacer(30);
 include_once('pagelayout/second_header.php');
 spacer(50);
 include_once('pagelayout/adminnavbar.php');
 spacer(50);
 
-$categories = Category::find_all();
+
 
 if(isset($_POST['add_catagory'])){
     $category = new Category();
@@ -78,6 +73,7 @@ if(isset($_POST['add_product'])){
                 <select multiple class="form-control" id="catagory-select" name="catagory_id">
                     <?php
 
+                    $categories = Category::find_all();
                     foreach($categories as $category){
                     ?>
                     <option value="<?php echo $category->id; ?>"><?php echo $category->category_name ?></option>

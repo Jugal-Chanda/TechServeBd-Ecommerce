@@ -8,7 +8,7 @@ define('SITE_ROOT',DS.'APPLICATIONS'.DS.'XAMPP' .........);
 
 include_once('urls.php');
 $files = array('functions','config','Database','Db_Object','Category','Product','User',
-'Session','Order'
+'Session','Order','Cart'
 );
 
 foreach ($files as $value) {

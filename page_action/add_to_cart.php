@@ -15,7 +15,7 @@ if(isset($_GET['id']) && $session->isSignedIn()){
     $cart->price = $product->price*$cart->quantity;
     $cart->user_id = $session->userId;
     $cart->save();
-    redirect($home_page_path);
+    redirect($home_page_path.DS."shoppingcart.php");
 }else{
 
 }

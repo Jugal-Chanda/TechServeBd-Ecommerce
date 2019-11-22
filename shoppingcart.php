@@ -20,6 +20,13 @@ if($session->isSignedIn() == true){
 
 ?>
 
+<style>
+.quantity_increase,.quantity_deccrease:hover {
+  cursor: pointer;
+}
+
+</style>
+
 <div class="row">
   <div class="col-md-4 col-sm-0" ></div>
   <div class="col-md-6 col-sm-12">
@@ -94,10 +101,10 @@ spacer(10);
                         <?php echo $cart->product_price; ?>
                     </td>
                     <td class="text-center">
-                        <a href="#"><i class="fa fa-minus fa-sm" aria-hidden="false" style="color: black;"></i></a>
+                        <span class="quantity_deccrease" value="<?php echo $cart->id; ?>"><i class="fa fa-minus fa-sm" aria-hidden="false" style="color: black;"></i></span>
 
                             <?php echo $cart->quantity; ?>
-                        <a href="#"><i class="fa fa-plus fa-sm" aria-hidden="false" style="color: black;"></i></a>
+                        <span class="quantity_increase" value="<?php echo $cart->id; ?>"><i class="fa fa-plus fa-sm" aria-hidden="false" style="color: black;"></i></span>
 
                     </td>
                     <td>
@@ -127,10 +134,11 @@ spacer(10);
     </div>
 </div>
 
-
-
+<script src="js\shopingcart.js"></script>
 <?php
+//Transaction ID
 
 include_once('pagelayout/footer.php');
+
 
 ?>

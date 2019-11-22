@@ -7,7 +7,6 @@ if(isset($_POST['password'])){
     $cart = Cart::find_by_id($_POST['cart_id']);
     $product = Product::find_by_id($cart->product_id);
     if($_POST['action'] == "inc"){
-
       $cart->quantity = $cart->quantity+1;
     }
     if($_POST['action'] == "dec"){

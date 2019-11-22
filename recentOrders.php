@@ -19,6 +19,7 @@ spacer(50);
 
 ?>
 
+
 <div class="row">
     <div class="col-md-2 col-sm-0"></div>
     <div class="col-md-8 col-sm-12">
@@ -65,7 +66,10 @@ spacer(50);
                   }?>
                 </td>
                 <td><?php echo $order_total_price->order_total_price; ?></td>
-                <td class="text-center"><i class="fa fa-eye fa-sm" aria-hidden="false" style="color: black;"></i></td>
+                <td class="text-center">
+                  <a href="singleorder.php?id=<?php echo $order->order_no; ?>"><i class="fa fa-eye fa-sm" aria-hidden="false" style="color: black;"></i></a>
+
+                  </td>
 
               </tr>
 

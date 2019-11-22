@@ -17,7 +17,7 @@
                        </li>
 
                        <li class="nav-item">
-                            <a class="nav-link" href="#">My Account</a>
+                            <a class="nav-link" href="myaccount.php">My Account</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="orders.php">Order</a>
@@ -26,7 +26,7 @@
                             <a class="nav-link" href="recentDelivery.php">Recent Delivary</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Contact</a>
+                            <a class="nav-link" href="admincontacts.php">Contact</a>
                         </li>
                    </ul>
                    <ul class="navbar-nav ml-auto">

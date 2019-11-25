@@ -11,6 +11,19 @@ spacer(50);
 ?>
 
 <div class="row">
+  <div class="col-md-2 col-sm-0"></div>
+  <div class="col-md-8">
+    <form class="form-inline" method="get">
+      <div class="form-group mb-2 mx-sm-3">
+        <input type="text" class="form-control " value="" placeholder="Search for Order ID" name="order_no">
+      </div>
+      <button type="submit" class="btn btn-primary mb-2" >Search</button>
+    </form>
+  </div>
+
+</div>
+
+<div class="row">
     <div class="col-md-2 col-sm-0"></div>
     <div class="col-md-8 col-sm-12">
         <table class="table table-bordered">
@@ -28,6 +41,7 @@ spacer(50);
             </thead>
             <tbody>
               <?php
+
               $orders = Order::find_all_undelivered_orders();
               if($orders!=false){
                 $sl  = 1;

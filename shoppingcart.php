@@ -13,10 +13,10 @@ include_once('pagelayout/second_header.php');
 spacer(50);
 include_once('pagelayout/navbar.php');
 spacer(50);
-$user = User::find_by_id($session->userId);
-if($session->isSignedIn() == true){
-  $cart = Cart::total_cart_price_for_user($session->userId);
-  if($cart!=false){
+// $user = User::find_by_id($session->userId);
+// if($session->isSignedIn() == true){
+//   $cart = Cart::total_cart_price_for_user($session->userId);
+//   if($cart!=false){
 
 ?>
 
@@ -27,37 +27,7 @@ if($session->isSignedIn() == true){
 
 </style>
 
-<div class="row">
-  <div class="col-md-4 col-sm-0" ></div>
-  <div class="col-md-6 col-sm-12">
-    <form class="form-inline text-right" action="page_action/order_now.php?id=<?php echo $session->userId; ?>" method="post">
-      <div class="form-group mx-sm-3 mb-2">
-        <label for="address" class="sr-only">Delivary Address</label>
-        <input type="text" class="form-control" id="address" name="delivery_address" required value="<?php echo $user->address ?>">
-      </div>
-      <div class="form-group mx-sm-3 mb-2">
-        <label for="payment_method" class="sr-only">payment method</label>
-        <select class="form-control" name="payment_method" id="payment_method">
-          <option value="bKash">bKash</option>
-        </select>
-      </div>
-      <div class="form-group mx-sm-3 mb-2">
-        <label for="trxid" class="sr-only">Trx Id</label>
-        <input type="text" class="form-control" id="trxid" name="trxid" placeholder="Trx Id">
-      </div>
-      <div class="mx-sm-3 mb-2">
-        <h3>Total :
-          <?php echo $cart->cart_total_price?$cart->cart_total_price:"0";
-          ?> Tk</h3>
-      </div>
-      <button type="submit" class="btn btn-primary mb-2" name="order">Order Now</button>
-    </form>
-
-  </div>
-</div>
 <?php
-}
-}
 spacer(10);
 ?>
 <div class="row">
@@ -79,8 +49,11 @@ spacer(10);
 
             <?php
 
-                if($session->isSignedIn())
-                    $carts = Cart::find_all_cart_by_user($session->userId);
+                if($session->isSignedIn()){
+                  $carts = Cart::find_all_cart_by_user($session->userId);
+                  $cart_total_price = Cart::total_cart_price_for_user($session->userId);
+                }
+
                 else
                     $carts = false;
                 $sl = 1;
@@ -126,8 +99,29 @@ spacer(10);
             <?php
                     $sl++;
                 }
-            }
             ?>
+            <form class="" action="page_action/order_now.php?id=<?php echo $session->userId; ?>" method="post">
+
+
+            <tr>
+              <td colspan="2"><input type="text" class="form-control-plaintext" id="address" name="delivery_address" required value="East West University Campus Gate"></td>
+              <td>
+                <select class="form-control" name="payment_method" id="payment_method">
+                  <option value="bKash">bKash</option>
+                </select>
+            </td>
+            <td>
+              <input type="text" class="form-control" id="trxid" name="trxid" placeholder="Transaction ID">
+            </td>
+            <td>Total:</td>
+            <td>
+              <?php echo $cart_total_price->cart_total_price?$cart_total_price->cart_total_price:"0";
+              ?> Tk</h3>
+            </td>
+            <td class="text-center"><button type="submit" class="btn btn-success" name="order">Order Now</button></td>
+            </tr>
+            </form>
+          <?php } ?>
 
             </tbody>
         </table>
@@ -136,7 +130,7 @@ spacer(10);
 
 <script src="js\shopingcart.js"></script>
 <?php
-//Transaction ID
+//
 
 include_once('pagelayout/footer.php');
 

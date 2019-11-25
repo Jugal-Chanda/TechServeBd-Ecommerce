@@ -14,21 +14,21 @@ class Product extends Db_Object {
     public $brand;
     public $details;
     public $category_id;
-    
+
     /*** check duplicate call_no **/
-    
+
     public function setfile($file){
         $target_dir = "images/";
         $target_file = $target_dir .time(). basename($file["name"]);
         echo $target_file;
         $uploadOk = 1;
         $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-        
+
         if (file_exists($target_file)) {
             echo "Sorry, file already exists.";
             $uploadOk = 0;
         }
-        
+
         if ($file["size"] > 5000000) {
             echo "Sorry, your file is too large. ".$file["size"];
             $uploadOk = 0;
@@ -47,20 +47,33 @@ class Product extends Db_Object {
                 echo "Sorry, there was an error uploading your file.";
             }
         }
-        
+
     }
-    
+
     public static function  find_by_category($category){
         $sql = "select * from ".static::$db_table." where category_id = '$category';";
         $result = static::findThisQuery($sql);
         return !empty($result)?$result:false;
     }
-   
-    
-    
-    
-    
-    
+
+    public static function find_all_product_by_order($order_no){
+      $orders = Order::find_all_order_by_order_no($order_no);
+      $products = array();
+      if($orders!=false){
+        foreach ($orders as $order) {
+          $products[] = self::find_by_id($order->product_id);
+        }
+        return $products;
+      }else{
+        return false;
+      }
+    }
+
+
+
+
+
+
 }
 
 

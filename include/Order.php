@@ -6,7 +6,7 @@ class Order extends Db_Object {
     protected static $db_table = "orders";
 
     protected static $db_fields = array('order_no','product_id','quantity','price','delivered','user_id','delivery_address',
-    'delivery_method');
+    'delivery_method','trx_id','date');
     public $id;
     public $order_no;
     public $product_id;
@@ -16,6 +16,8 @@ class Order extends Db_Object {
     public $user_id;
     public $delivery_address;
     public $delivery_method;
+    public $trx_id = "";
+    public $date;
 
 
     public $order_total_price;
@@ -45,7 +47,7 @@ class Order extends Db_Object {
 
       $sql = "select  distinct users.name as user_name, users.phone as user_phone,
       users.email as user_email, orders.delivery_address,orders.delivery_method, orders.order_no from "
-      .static::$db_table.", users where users.id = orders.user_id and delivered = '0';";
+      .static::$db_table.", users where users.id = orders.user_id and delivered = '0' order by orders.id DESC ;";
       $result = static::findThisQuery($sql);
       return !empty($result)?$result:false;
     }
@@ -54,7 +56,7 @@ class Order extends Db_Object {
 
       $sql = "select  distinct users.name as user_name, users.phone as user_phone,
       users.email as user_email, orders.delivery_address,orders.delivery_method, orders.order_no from "
-      .static::$db_table.", users where users.id = orders.user_id and delivered = '1';";
+      .static::$db_table.", users where users.id = orders.user_id and delivered = '1' order by orders.id DESC ;";
       $result = static::findThisQuery($sql);
       return !empty($result)?$result:false;
     }
@@ -73,11 +75,15 @@ class Order extends Db_Object {
 
     public static function find_all_order_by_user($userId){
       $sql = "select  distinct users.name as user_name, users.phone as user_phone,
-      users.email as user_email, orders.delivery_address,orders.delivery_method, delivered, orders.order_no from "
-      .static::$db_table.", users where users.id = orders.user_id and orders.user_id = '$userId';";
+      users.email as user_email, orders.delivery_address,orders.delivery_method, orders.date, delivered, orders.order_no from "
+      .static::$db_table.", users where users.id = orders.user_id and orders.user_id = '$userId' order by orders.id DESC ;";
       $result = static::findThisQuery($sql);
       return !empty($result)?$result:false;
 
+    }
+
+    public function order_date(){
+      return date('d-m-Y',$this->date);
     }
 
 }

@@ -5,10 +5,10 @@
 /*
 define('SITE_ROOT',DS.'APPLICATIONS'.DS.'XAMPP' .........);
 */
-
+include_once('plugins/PHPMailer/PHPMailerAutoload.php');
 include_once('urls.php');
 $files = array('functions','config','Database','Db_Object','Category','Product','User',
-'Session','Order','Cart'
+'Session','Order','Cart','Contact'
 );
 
 foreach ($files as $value) {
@@ -18,6 +18,8 @@ foreach ($files as $value) {
   //echo $path."<br>";
   include_once($path);
 }
+
+
 // include_once('functions.php');
 // include_once('config.php');
 // include_once('Database.php');

@@ -2,7 +2,7 @@
     $mailto = $_POST['mail_to'];
     $mailSub = $_POST['mail_sub'];
     $mailMsg = $_POST['mail_msg'];
-   require 'PHPMailer-master/PHPMailerAutoload.php';
+   require 'PHPMailer/PHPMailerAutoload.php';
    $mail = new PHPMailer();
    $mail ->IsSmtp();
    $mail ->SMTPDebug = 0;

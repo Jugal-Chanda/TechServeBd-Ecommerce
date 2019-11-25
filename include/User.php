@@ -16,6 +16,12 @@ class User extends Db_Object {
 
 
 
+    public static function find_user_details_by_order_no($order_no){
+      $order = Order::find_all_order_by_order_no($order_no);
+      $tmp = array_shift($order);
+      $user = self::find_by_id($tmp->user_id);
+      return $user;
+    }
     /*---------------Authentication------------------*/
     public static function verifyUser($email,$password){
         $sql = "select * from ".self::$db_table." where email = '$email' and password = '$password' limit 1;";

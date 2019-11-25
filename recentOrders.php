@@ -28,6 +28,7 @@ spacer(50);
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Order No</th>
+                    <th scope="col">Date</th>
                     <th scope="col">Name</th>
                     <th scope="col">Phone</th>
                     <th scope="col">Email</th>
@@ -54,6 +55,7 @@ spacer(50);
               <tr>
                 <th scope="row"><?php echo $sl; ?></th>
                 <td><?php echo $order->order_no; ?></td>
+                <td><?php echo $order->order_date(); ?></td>
                 <td><?php echo $order->user_name; ?></td>
                 <td><?php echo $order->user_phone; ?></td>
                 <td><?php echo $order->user_email; ?></td>

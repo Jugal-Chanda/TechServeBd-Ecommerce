@@ -1,5 +1,3 @@
-
-
 <?php
 
 include_once('include/init.php');
@@ -37,11 +35,16 @@ if(isset($_GET['orderNo'])){
 
 <div class="row">
 
-  <div class="col-md-9 col-sm-0">
-
+  <div class="col-md-7 col-sm-0">
   </div>
-  <div class="col-md-1 col-sm-12 text-center">
-    <a href="page_action/confirm_order.php?orderno=<?php echo $_GET['orderNo']; ?>" class="btn btn-primary">
+  <div class="col-md-3 col-sm-12 text-center">
+    <a href="paymentslipadmin.php?orderno=<?php echo $_GET['orderNo']; ?>" class="btn btn-info">
+      Payment Slip
+    </a>
+    <a href="page_action/cancel_order.php?orderno=<?php echo $_GET['orderNo']; ?>" class="btn btn-danger">
+      Cancel Order
+    </a>
+    <a href="page_action/confirm_order.php?orderno=<?php echo $_GET['orderNo']; ?>" class="btn btn-success">
       <?php if($order->delivered ==true){
         echo "Delivered";
       }else{

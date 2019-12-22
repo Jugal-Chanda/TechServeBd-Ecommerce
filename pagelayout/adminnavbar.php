@@ -20,6 +20,9 @@
                             <a class="nav-link" href="myaccount.php">My Account</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="adminProducts.php">Products</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="orders.php">Order</a>
                         </li>
                         <li class="nav-item">
